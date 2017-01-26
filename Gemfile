@@ -14,7 +14,6 @@ gem 'puma', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem 'pg'
-gem 'sqlite3'
 gem 'simple_command'
 
 group :development, :test do
