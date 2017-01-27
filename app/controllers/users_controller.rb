@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_request, only: [:index, :create]
   wrap_parameters :user, include: [:email, :name, :password, :password_confirmation, :id, :password_digest]
+  before_action :add_header
 
   # GET /users
   def index
     @users = User.all
     render json: @users
-    headers['Access-Control-Allow-Origin'] = "*"
   end
 
   # GET /users/1
@@ -45,6 +45,10 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_User
       @user = User.find(params[:id])
+    end
+
+    def add_header
+      headers['Access-Control-Allow-Origin'] = "*"
     end
 
     # Only allow a trusted parameter "white list" through.
