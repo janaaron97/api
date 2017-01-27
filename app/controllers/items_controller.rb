@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   def index
     @items = Item.all
+    headers['Access-Control-Allow-Origin'] = "*"
 
     render json: @items
   end
